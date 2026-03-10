@@ -3,6 +3,7 @@ const myLibrary = [];
 
 // constructor
 function Book(title, author, pages, read) {
+  this.id = crypto.randomUUID();
   this.title = title;
   this.author = author;
   this.pages = pages;
@@ -14,7 +15,3 @@ function addBookToLibrary(title, author, pages, read) {
   const book = new Book(title, author, pages, read);
   myLibrary.push(book);
 }
-
-addBookToLibrary("The Hobbit", "Tolkien", 295, false);
-addBookToLibrary("1984", "George Orwell", 328, true);
-console.log(myLibrary);
