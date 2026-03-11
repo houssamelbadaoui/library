@@ -15,3 +15,37 @@ function addBookToLibrary(title, author, pages, read) {
   const book = new Book(title, author, pages, read);
   myLibrary.push(book);
 }
+
+// function to display books
+function displayBooks() {
+  const container = document.getElementById("library");
+  console.log("library container", container);
+  console.log("Current MyLibrary", myLibrary);
+
+  container.innerHTML = "";
+  myLibrary.forEach((book) => {
+    // create card element
+    const card = document.createElement("div");
+    card.classList.add("book-card");
+
+    // attach id
+    card.dataset.id = book.id;
+
+    // fill card content
+    card.innerHTML = `
+    <h3>${book.title}</h3>
+    <p><strong>Author</strong> ${book.author}</p>
+    <p><strong>Pages</strong> ${book.pages}</p>
+    <p><strong>Status</strong>${book.read ? "Read" : "Not read"}</p>
+    <button class="toggle-read">Toggle read</button>
+    <button class="remove-book">remove</button>`;
+
+    // add card to container
+    container.appendChild(card);
+  });
+}
+
+addBookToLibrary("The hobbit", "Tolkien", 295, false);
+addBookToLibrary("1984", "George Orwell", 328, true);
+
+displayBooks();
