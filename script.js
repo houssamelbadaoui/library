@@ -17,8 +17,8 @@ function addBookToLibrary(title, author, pages, read) {
 }
 
 // function to display books
+const container = document.getElementById("library");
 function displayBooks() {
-  const container = document.getElementById("library");
   console.log("library container", container);
   console.log("Current MyLibrary", myLibrary);
 
@@ -80,3 +80,37 @@ form.addEventListener("submit", function (e) {
   form.reset();
   modal.classList.add("hidden");
 });
+
+// Remove and toggle buttons
+container.addEventListener("click", (e) => {
+  const card = e.target.closest(".book-card");
+  if (!card) return;
+
+  const id = card.dataset.id;
+
+  if (e.target.classList.contains("remove-book")) {
+    removeBook(id);
+    displayBooks();
+  }
+  if (e.target.classList.contains("toggle-read")) {
+    toggleRead(id);
+    displayBooks();
+  }
+});
+
+// RemoveBook using id
+function removeBook(id) {
+  const newLibrary = myLibrary.filter((book) => book.id !== id);
+
+  // replace old library with new one
+  myLibrary.length = 0;
+  myLibrary.push(...newLibrary);
+}
+
+function toggleRead(id) {
+  // find the book inside the array
+  const book = myLibrary.find((book) => book.id === id);
+  if (book) {
+    book.read = !book.read; // flip true to false
+  }
+}
