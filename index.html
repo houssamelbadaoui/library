@@ -9,6 +9,17 @@
   <body>
     <h1>My Library</h1>
     <button id="newBookBtn">Add Book</button>
+    <form id="bookForm">
+      <input type="text" id="title" placeholder="Title" required />
+      <input type="text" id="author" placeholder="Author" required />
+      <input type="text" id="pages" placeholder="Pages" required />
+
+      <label>
+        <input type="checkbox" id="read" />
+        Read
+      </label>
+      <button type="submit">Add Book</button>
+    </form>
     <div id="library"></div>
     <script src="script.js"></script>
   </body>

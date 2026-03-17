@@ -45,7 +45,26 @@ function displayBooks() {
   });
 }
 
-addBookToLibrary("The hobbit", "Tolkien", 295, false);
-addBookToLibrary("1984", "George Orwell", 328, true);
+// form submission
+const form = document.getElementById("bookForm");
 
-displayBooks();
+form.addEventListener("submit", function (e) {
+  e.preventDefault();
+
+  console.log("Form submited");
+
+  // get values
+  const title = document.getElementById("title").value;
+  const author = document.getElementById("author").value;
+  const pages = document.getElementById("pages").value;
+  const read = document.getElementById("read").checked;
+
+  // add Book
+  addBookToLibrary(title, author, pages, read);
+
+  // display and update UI
+  displayBooks();
+
+  // reset form
+  form.reset();
+});
