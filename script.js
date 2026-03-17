@@ -46,7 +46,12 @@ function displayBooks() {
 }
 
 // form submission
+const newBookBtn = document.getElementById("newBookBtn");
 const form = document.getElementById("bookForm");
+
+newBookBtn.addEventListener("click", () => {
+  form.classList.toggle("hidden");
+});
 
 form.addEventListener("submit", function (e) {
   e.preventDefault();
